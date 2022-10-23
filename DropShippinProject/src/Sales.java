@@ -3,23 +3,22 @@ public class Sales {
 	private int ID;
 	private String Customer;
 	private String Product;
-	@Override
-	public String toString() {
-		return "Sales [ID=" + ID + ", Customer=" + Customer + ", Product=" + Product + ", SalesData=" + SalesData
-				+ ", SalesPrice=" + SalesPrice + "]";
-	}
+	private String SalesDate;
+	private int SalesPrice;
+	
 	public Sales(int iD,
 			String customer,
-			String product, String salesData, int salesPrice) {
+			String product, String salesDate, int salesPrice) {
 		super();
 		ID = iD;
 		Customer = customer;
 		Product = product;
-		SalesData = salesData;
+		SalesDate = salesDate;
 		SalesPrice = salesPrice;
 	}
-	private String SalesData;
-	private int SalesPrice;
+	public Sales() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getID() {
 		return ID;
 	}
@@ -38,16 +37,21 @@ public class Sales {
 	public void setProduct(String product) {
 		Product = product;
 	}
-	public String getSalesData() {
-		return SalesData;
+	public String getSalesDate() {
+		return SalesDate;
 	}
-	public void setSalesData(String salesData) {
-		SalesData = salesData;
+	public void setSalesDate(String salesData) {
+		SalesDate = salesData;
 	}
 	public int getSalesPrice() {
 		return SalesPrice;
 	}
 	public void setSalesPrice(int salesPrice) {
 		SalesPrice = salesPrice;
+	}
+	@Override
+	public String toString() {
+		return "Sales [ID=" + ID + ", Customer=" + Customer + ", Product=" + Product + ", SalesData=" + SalesDate
+				+ ", SalesPrice=" + SalesPrice + "]";
 	}
 }

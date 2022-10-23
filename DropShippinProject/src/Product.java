@@ -1,28 +1,32 @@
 
 public class Product {
-	private int ID;
+	private String ID;
 	private String Title;
 	private double Rate;
-	private int Number_of_Reviews;
+	private int NumberOfReviews;
 	private int Price;
-	public Product(int iD,
+	public Product(String iD,
 			String title,
 			double rate, int number_of_Reviews, int price) {
+		
 		ID = iD;
 		Title = title;
 		Rate = rate;
-		Number_of_Reviews = number_of_Reviews;
+		NumberOfReviews = number_of_Reviews;
 		Price = price;
+	}
+	public Product() {
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "Product [ID=" + ID + ", Title=" + Title + ", Rate=" + Rate + ", Number_of_Reviews=" + Number_of_Reviews
+		return "Product [ID=" + ID + ", Title=" + Title + ", Rate=" + Rate + ", Number_of_Reviews=" + NumberOfReviews
 				+ ", Price=" + Price + "]";
 	}
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
-	public void setID(int iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 	public String getTitle() {
@@ -37,11 +41,11 @@ public class Product {
 	public void setRate(double rate) {
 		Rate = rate;
 	}
-	public int getNumber_of_Reviews() {
-		return Number_of_Reviews;
+	public int getNumberofReviews() {
+		return NumberOfReviews;
 	}
-	public void setNumber_of_Reviews(int number_of_Reviews) {
-		Number_of_Reviews = number_of_Reviews;
+	public void setNumberofReviews(int d) {
+		NumberOfReviews = d;
 	}
 	public int getPrice() {
 		return Price;

@@ -1,11 +1,11 @@
 
 public class Customer {
-	private int ID;
+	private String ID;
 	private String Name;
 	private String Email;
 	private String Country;
 	private String Address;
-	public Customer(int iD,
+	public Customer(String iD,
 			String name, String email, String country, String address) {
 		ID = iD;
 		Name = name;
@@ -13,15 +13,18 @@ public class Customer {
 		Country = country;
 		Address = address;
 	}
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Customer [ID=" + ID + ", Name=" + Name + ", Email=" + Email + ", Country=" + Country + ", Address="
 				+ Address + "]";
 	}
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
-	public void setID(int iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 	public String getName() {
