@@ -24,7 +24,7 @@ public class FileIO {
 		customer.setEmail(rows[2]);
 		customer.setCountry(rows[3]);
 		customer.setAddress(rows[4]);
-		System.out.println(customer.toString());
+		System.out.println(customer);
 
 		
 		}  
@@ -41,6 +41,7 @@ public class FileIO {
 			{  
 			BufferedReader br = new BufferedReader(new FileReader(CSVFile));
 			String a = br.readLine(); //dead variable for skip the headers deal with it later
+			Supplier supplier = new Supplier();
 			while ((line = br.readLine()) != null)   
 			{ 
 			Product product = new Product();
@@ -50,14 +51,21 @@ public class FileIO {
 			product.setRate(Double.parseDouble(rows[2]));
 			product.setNumberofReviews(Integer.parseInt(rows[3]));
 			product.setPrice(Integer.parseInt(rows[4]));
-			System.out.println(product.toString());
+			System.out.println(product);
+			
+			supplier.setProducts(product);
+			System.out.println(supplier);
+			
+			
 
 			
-			}  
+			}
+			supplier.setArrayIndex(0);
 			}   
 			catch (IOException e)   
 			{  
 			e.printStackTrace();  }
+			
 	}
 			public static void transferSalesData(String CSVFile) throws FileNotFoundException {
 				String line = "";  
@@ -65,25 +73,35 @@ public class FileIO {
 				try   
 				{  
 				BufferedReader br = new BufferedReader(new FileReader(CSVFile));
-				String a = br.readLine(); //dead variable for skip the headers deal with it later
+				br.readLine();//dead variable for skip the headers deal with it later
+				SalesManagement salesManagement = new SalesManagement();
+				int salesIndex = 0;
+				int supplierIndex = 0;
 				while ((line = br.readLine()) != null)   
 				{ 
 				Sales sales = new Sales();
-
-				String[] rows = line.split(splitBy);
-				System.out.println(rows[0]);
-//				sales.setID(Integer.parseInt(rows[0]));
-//				sales.setCustomer(rows[1]);
-//				sales.setProduct(rows[2]);
-//				sales.setSalesDate(rows[3]);
-//				System.out.println(sales.toString());
+				String[] rows = line.split(splitBy); 
+				sales.setID(Integer.parseInt(rows[0]));
+				sales.setCustomer(rows[1]);
+				sales.setProduct(rows[2]);
+				sales.setSalesDate(rows[3]);
+				salesManagement.setSales(sales);
+				System.out.println(sales);
+				salesIndex++;
+				salesManagement.setSalesIndex(salesIndex);
+				System.out.println(salesManagement.toString());
 
 				
-				}  
+				}
+				supplierIndex++;
+
+				salesManagement.setSupplierIndex(supplierIndex);
 				}   
 				catch (IOException e)   
 				{  
-				e.printStackTrace();  
+				e.printStackTrace();  }
+				
 		}
 			
-	}}
+			
+	}

@@ -9,9 +9,9 @@ public class DropShippingApp {
 		file.transferProductData("src\\S1_Products.csv");
 		file.transferProductData("src\\S2_Products.csv");
 		file.transferProductData("src\\S3_Products.csv");
-		file.transferProductData("src\\S1_Sales.csv");
-		file.transferProductData("src\\S2_Sales.csv");
-		file.transferProductData("src\\S3_Sales.csv");
+		file.transferSalesData("src\\S1_Sales.csv");
+		file.transferSalesData("src\\S2_Sales.csv");
+		file.transferSalesData("src\\S3_Sales.csv");
 
 
 
