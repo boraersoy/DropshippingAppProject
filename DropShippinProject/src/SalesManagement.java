@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 public class SalesManagement {
 	private final int  numberOfSuppliers = 3;
@@ -10,8 +9,9 @@ public class SalesManagement {
 	
 	private int supplierIndex = 0;
 	private int salesIndex = 0;
-	public Sales[][] getSales() {
-		return Sales;
+	public Sales getSales() {
+		
+		return Sales[SupplierIndex][SalesIndex];
 	}
 	public void setSales(Sales sales) {
 		Sales[SupplierIndex][SalesIndex] = sales;
@@ -29,6 +29,7 @@ public class SalesManagement {
 	public void setSalesIndex(int salesIndex) {
 		this.salesIndex = salesIndex;
 	}
+	
 	@Override
 	public String toString() {
 		return "SalesManagement [Sales=" + Sales[supplierIndex][SalesIndex] + "]";

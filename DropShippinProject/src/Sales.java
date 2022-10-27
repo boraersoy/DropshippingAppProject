@@ -4,7 +4,7 @@ public class Sales {
 	private String Customer;
 	private String Product;
 	private String SalesDate;
-	private int SalesPrice;
+	private double SalesPrice;
 	
 	public Sales(int iD,
 			String customer,
@@ -43,12 +43,15 @@ public class Sales {
 	public void setSalesDate(String salesData) {
 		SalesDate = salesData;
 	}
-	public int getSalesPrice() {
+	public double getSalesPrice() {
 		return SalesPrice;
 	}
-	public void setSalesPrice(int salesPrice) {
+	public void setSalesPrice(double salesPrice) {
 		SalesPrice = salesPrice;
 	}
+//	public void calcSalesPrice() {
+//		SalesPrice = Price + Rate/5 * 100 * numberOfReviews;
+//	}
 	@Override
 	public String toString() {
 		return "Sales [ID=" + ID + ", Customer=" + Customer + ", Product=" + Product + ", SalesData=" + SalesDate

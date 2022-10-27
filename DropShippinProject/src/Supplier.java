@@ -3,6 +3,7 @@ public class Supplier {
 	private int initialCapacity = 50;
 	private Product[] Products = new Product[initialCapacity];
 	private int arrayIndex = 0;
+	public int productArrayIndex = 0;
 
 	public Supplier(Product[] products) {
 		Products = products;
@@ -12,12 +13,13 @@ public class Supplier {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product[] getProducts() {
-		return Products;
+	public Product getProducts() {
+		productArrayIndex++;
+		return Products[productArrayIndex ];
 	}
 
 	public void setProducts(Product products) {
-		Products[arrayIndex + 1] = products;
+		Products[arrayIndex + 1 ] = products;
 		arrayIndex++;
 	}
 
