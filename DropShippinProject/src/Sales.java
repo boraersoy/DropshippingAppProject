@@ -1,12 +1,12 @@
 
 public class Sales {
-	private int ID;
+	private String ID;
 	private String Customer;
 	private String Product;
 	private String SalesDate;
 	private double SalesPrice;
 	
-	public Sales(int iD,
+	public Sales(String iD,
 			String customer,
 			String product, String salesDate, int salesPrice) {
 		super();
@@ -19,10 +19,10 @@ public class Sales {
 	public Sales() {
 		// TODO Auto-generated constructor stub
 	}
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
-	public void setID(int iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 	public String getCustomer() {

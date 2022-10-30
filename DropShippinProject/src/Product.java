@@ -5,6 +5,14 @@ public class Product {
 	private double Rate;
 	private int NumberOfReviews;
 	private int Price;
+	private double SalesPrice;
+	
+	public double getSalesPrice() {
+		return SalesPrice;
+	}
+	public void setSalesPrice(double salesPrice) {
+		SalesPrice = salesPrice;
+	}
 	public Product(String iD,
 			String title,
 			double rate, int number_of_Reviews, int price) {

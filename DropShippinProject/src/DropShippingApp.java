@@ -17,17 +17,21 @@ public class DropShippingApp {
 		
 		Sales[][] sales = file.salesArray;
 		Product[] products = file.products;
-		System.out.println(Arrays.toString(sales[2])); // her fonksiyon execute 
+//		System.out.println(file.salesPriceArray.length);
+		System.out.println(Arrays.toString(FileIO.CustomerArray));
+		System.out.println(Arrays.toString(sales[0])); // her fonksiyon execute 
 //		olduğunda array yeniledni o yüzden 01liler kaldı düzeltilmeli
 		
-////		double mostProfitable = SalesQuery.getMostProfitableProduct(file.salesArray, file.products);
-////		System.out.println(file.products);
-////		for (int i = 0; i< file.products.length; i++) {
-////			System.out.println(file.products[i].getPrice());
-//		}
+		SalesQuery.getMostProfitableProduct(sales, products);
+		SalesQuery.getMostExpensive(sales, products);
+		SalesQuery.totalProfitMadeFromAllSales(sales, products);
+		SalesQuery.getTheLeastProfitableSale(sales, products);
 
 
-	
+////	System.out.println(file.products);
+////	for (int i = 0; i< file.products.length; i++) {
+////		System.out.println(file.products[i].getPrice());
+//	}
 	
 	}
 

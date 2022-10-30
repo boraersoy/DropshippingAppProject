@@ -3,18 +3,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileIO {
-	public static double[] salesPriceArray = new double[50];
+	public static Product[] salesPriceArray = new Product[100];
 	public static Product[] products = new Product[150];
 	public static  int productArrayCount = 0;
 	public static int salesArrayCount = 0;
 	public static Sales[][] salesArray = new Sales[3][50];
 	private static int salesSupplierCount;
+	private static int index = 0;
+	private static int salesIndex1 = 0;
+	public static Customer[] CustomerArray = new Customer[20];
 	public static void transferCustomerData(String CSVFile) throws FileNotFoundException {
 		String line = "";  
-		String splitBy = ",";  
+		String splitBy = ","; 
+		int i = 0;
 		try   
 		{  
 		BufferedReader br = new BufferedReader(new FileReader(CSVFile));
@@ -28,7 +33,8 @@ public class FileIO {
 		customer.setEmail(rows[2]);
 		customer.setCountry(rows[3]);
 		customer.setAddress(rows[4]);
-
+		CustomerArray[i] = customer;
+		i++;
 		System.out.println(customer);
 
 		
@@ -47,7 +53,6 @@ public class FileIO {
 			BufferedReader br = new BufferedReader(new FileReader(CSVFile));
 			br.readLine(); //dead variable for skip the headers deal with it later
 			Supplier supplier = new Supplier();
-			int index = 0;
 			while ((line = br.readLine()) != null)   
 			{ 
 			Product product = new Product();
@@ -57,8 +62,8 @@ public class FileIO {
 			product.setRate(Double.parseDouble(rows[2]));
 			product.setNumberofReviews(Integer.parseInt(rows[3]));
 			product.setPrice(Integer.parseInt(rows[4]));
-			salesPriceArray[index] = calcSalesPrice(Integer.parseInt(rows[4]), Double.parseDouble(rows[2])
-					, Integer.parseInt(rows[3])); //buraya variable atamak lazım
+			product.setSalesPrice(calcSalesPrice(product));
+			salesPriceArray[index] = product; //buraya variable atamak lazım
 			
 			index++; // bu arrayi file io fieldı yapıcan sonra salese atıcan
 			System.out.println(product);
@@ -70,11 +75,11 @@ public class FileIO {
 
 			
 			}
+	
 			for (int i = 0; i < supplier.getArrayIndex()  ; i++) {
 				products[productArrayCount] = supplier.getProducts();
 				productArrayCount++;
 			}
-			System.out.println(productArrayCount);
 			supplier.setArrayIndex(0);
 			} 
 			
@@ -94,29 +99,29 @@ public class FileIO {
 				SalesManagement salesManagement = new SalesManagement();
 				int salesIndex = 0;
 				int supplierIndex = 0;
+				int i = 0;
 				while ((line = br.readLine()) != null)   
 				{ 
 				Sales sales = new Sales();
 				String[] rows = line.split(splitBy); 
-				sales.setID(Integer.parseInt(rows[0]));
+				sales.setID(rows[0]);
 				sales.setCustomer(rows[1]);
 				sales.setProduct(rows[2]);
 				sales.setSalesDate(rows[3]);
-				sales.setSalesPrice(salesPriceArray[salesIndex]);
+				sales.setSalesPrice(linearProductSearch(products, sales.getProduct()));
+//				sales.setSalesPrice(salesPriceArray[salesIndex1]);
 				salesManagement.setSales(sales);
 				System.out.println(sales);
-				salesIndex++;
 				salesManagement.setSalesIndex(salesIndex);
 				System.out.println(salesManagement.toString());
-
+				salesArray[salesSupplierCount][salesIndex] = salesManagement.getSales();
+				salesIndex++;
+				salesIndex1++;
 				
 				}
 				supplierIndex++;
-				salesManagement.setSupplierIndex(supplierIndex);
-					for (int k = 0; k < salesManagement.getSalesIndex()  ; k++) {
 
-					salesArray[salesSupplierCount][salesManagement.getSalesIndex()] = salesManagement.getSales();
-					}
+				
 				
 				
 				
@@ -128,13 +133,28 @@ public class FileIO {
 				
 					
 				}
-		public static double calcSalesPrice(int price, double rate,
-				int numberOfReviews) {
-				double salesPrice = (price + rate/5 * 100 * numberOfReviews);
+		public static double calcSalesPrice(Product product
+				) {
+				double salesPrice = (product.getPrice() + product.getRate()/5 * 100 * product.getNumberofReviews());
 				
 				return salesPrice;
 				
 		}
+		public static void searchProductId(Product productObject, Sales salesObject) {
+			
+			if(salesObject.getID().equals(productObject.getID()))
+			{
+				salesObject.setSalesPrice(calcSalesPrice(productObject));
+			}
+		}
+		public static double linearProductSearch(Product[] productArray, String salesID){    
+	        for(int i=0;i<38;i++){    
+	            if(productArray[i].getID().equals(salesID)){
+	                return calcSalesPrice(productArray[i]);    
+	            }    
+	        }    
+	        return -1;
+	    }  
 }	
 			
 		

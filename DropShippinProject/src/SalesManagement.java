@@ -4,7 +4,7 @@ public class SalesManagement {
 	private final int maxCapacity = 50;
 	private int SupplierIndex = 0;
 	private int SalesIndex = 0;
-	private Sales[][] Sales = new Sales[numberOfSuppliers][maxCapacity];
+	public Sales[][] Sales = new Sales[numberOfSuppliers][maxCapacity];
 	
 	
 	private int supplierIndex = 0;
@@ -12,6 +12,10 @@ public class SalesManagement {
 	public Sales getSales() {
 		
 		return Sales[SupplierIndex][SalesIndex];
+	}
+	public Sales[][] getSalesArray() 
+	{
+		return Sales;
 	}
 	public void setSales(Sales sales) {
 		Sales[SupplierIndex][SalesIndex] = sales;
